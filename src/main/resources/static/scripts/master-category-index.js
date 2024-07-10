@@ -58,9 +58,9 @@ $(function () {
                 // columns according to JSON
                 { data: '' },
                 { data: 'id' },
-                { data: 'categories' },
-                { data: 'total_products' },
-                { data: 'total_earnings' },
+                { data: 'name' },
+                { data: 'totalProducts' },
+                { data: 'totalEarnings' },
                 { data: '' }
             ],
             columnDefs: [
@@ -81,7 +81,7 @@ $(function () {
                     orderable: false,
                     searchable: false,
                     responsivePriority: 4,
-                    checkboxes: true,
+                    // checkboxes: true,
                     render: function () {
                         return '<input type="checkbox" class="dt-checkboxes form-check-input">';
                     },
@@ -94,7 +94,7 @@ $(function () {
                     targets: 2,
                     responsivePriority: 2,
                     render: function (data, type, full, meta) {
-                        var $name = full['categories'],
+                        var $name = full['name'],
                             $category_detail = full['category_detail'],
                             $image = full['cat_image'],
                             $id = full['id'];
@@ -143,8 +143,8 @@ $(function () {
                     targets: 3,
                     responsivePriority: 3,
                     render: function (data, type, full, meta) {
-                        var $total_products = full['total_products'];
-                        return '<div class="text-sm-end">' + $total_products + '</div>';
+                        var $totalProducts = full['totalProducts'];
+                        return '<div class="text-sm-end">' + $totalProducts + '</div>';
                     }
                 },
                 {
@@ -152,8 +152,8 @@ $(function () {
                     targets: 4,
                     orderable: false,
                     render: function (data, type, full, meta) {
-                        var $total_earnings = full['total_earnings'];
-                        return "<div class='h6 mb-0 text-sm-end'>" + $total_earnings + '</div';
+                        var $totalEarnings = full['totalEarnings'];
+                        return "<div class='h6 mb-0 text-sm-end'>" + $totalEarnings + '</div';
                     }
                 },
                 {

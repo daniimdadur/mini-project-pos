@@ -16,14 +16,21 @@
                 <table class="datatables-category-list table border-top">
                     <thead>
                     <tr>
-                        <th></th>
-                        <th></th>
+                        <th>Id</th>
                         <th>Categories</th>
-                        <th class="text-nowrap text-sm-end">Total Products &nbsp;</th>
-                        <th class="text-nowrap text-sm-end">Total Earning</th>
+                        <th>Total Products</th>
+                        <th>Total Earning</th>
                         <th class="text-lg-center">Actions</th>
                     </tr>
                     </thead>
+                    <tbody>
+                    <tr th:each="data : ${category}">
+                        <td th:text="${data.id}"></td>
+                        <td th:text="${data.name}"></td>
+                        <td th:text="${data.totalProducts}"></td>
+                        <td th:text="${data.totalEarnings}"></td>
+                    </tr>
+                    </tbody>
                 </table>
             </div>
         </div>
