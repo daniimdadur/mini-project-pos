@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.project.pos.constan.DataStatus;
 
 @Entity
 @Data
@@ -26,12 +25,12 @@ public class CategoryEntity {
     private String name;
 
     @Column(name = "total_products")
-    private int totalProducts;
+    private Integer totalProducts;
 
     @Column(name = "total_earnigs")
-    private int totalEarnigs;
+    private Integer totalEarnings;
 
-    @Builder.Default
-    @Column(name = "category_status")
-    private DataStatus status = DataStatus.ACTIVE;
+//    @Builder.Default
+//    @Column(name = "category_status")
+//    private DataStatus status = DataStatus.ACTIVE;
 }

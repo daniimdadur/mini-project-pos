@@ -3,7 +3,6 @@ package org.project.pos.category.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.project.pos.constan.DataStatus;
 import org.springframework.beans.BeanUtils;
 
 @Data
@@ -13,11 +12,10 @@ public class CategoryRes {
 
     private String id;
     private String name;
-    private String totalProducts;
-    private String totalEarnings;
-    private DataStatus status;
+    private Integer totalProducts;
+    private Integer totalEarnings;
+public CategoryRes(CategoryEntity categoryEntity) {
+    BeanUtils.copyProperties(categoryEntity, this);
+}
 
-    public CategoryRes(CategoryEntity categoryEntity) {
-        BeanUtils.copyProperties(categoryEntity, this);
-    }
 }

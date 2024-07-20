@@ -51,9 +51,10 @@ $(function () {
 
     // Customers List Datatable
 
-    if (dt_category_list_table.length) {
+    if (dt_category_list_table.length > 0) {
+        var ajaxUrl = $('#person-title').attr('href');
         var dt_category = dt_category_list_table.DataTable({
-            ajax: assetsPath + 'json/ecommerce-category-list.json', // JSON file to add data
+            ajax: ajaxUrl, // JSON file to add data
             columns: [
                 // columns according to JSON
                 { data: '' },
@@ -67,93 +68,45 @@ $(function () {
                 {
                     // For Responsive
                     className: 'control',
-                    searchable: false,
-                    orderable: false,
+                    searchable: true,
+                    orderable: true,
                     responsivePriority: 1,
                     targets: 0,
-                    render: function (data, type, full, meta) {
-                        return '';
-                    }
                 },
                 {
-                    // For Checkboxes
                     targets: 1,
-                    orderable: false,
-                    searchable: false,
-                    responsivePriority: 4,
-                    // checkboxes: true,
-                    render: function () {
-                        return '<input type="checkbox" class="dt-checkboxes form-check-input">';
-                    },
-                    checkboxes: {
-                        selectAllRender: '<input type="checkbox" class="form-check-input">'
+                    searchable: true,
+                    orderable: true,
+                    render: (data, type, full, meta) => {
+                        var $item = full['id'];
+                        return '<span>' + $item + '</span>';
                     }
                 },
                 {
-                    // Categories and Category Detail
                     targets: 2,
-                    responsivePriority: 2,
-                    render: function (data, type, full, meta) {
-                        var $name = full['name'],
-                            $category_detail = full['category_detail'],
-                            $image = full['cat_image'],
-                            $id = full['id'];
-                        if ($image) {
-                            // For Product image
-                            var $output =
-                                '<img src="' +
-                                assetsPath +
-                                'img/ecommerce-images/' +
-                                $image +
-                                '" alt="Product-' +
-                                $id +
-                                '" class="rounded-2">';
-                        } else {
-                            // For Product badge
-                            var stateNum = Math.floor(Math.random() * 6);
-                            var states = ['success', 'danger', 'warning', 'info', 'dark', 'primary', 'secondary'];
-                            var $state = states[stateNum],
-                                $name = full['category_detail'],
-                                $initials = $name.match(/\b\w/g) || [];
-                            $initials = (($initials.shift() || '') + ($initials.pop() || '')).toUpperCase();
-                            $output = '<span class="avatar-initial rounded-2 bg-label-' + $state + '">' + $initials + '</span>';
-                        }
-                        // Creates full output for Categories and Category Detail
-                        var $row_output =
-                            '<div class="d-flex align-items-center">' +
-                            '<div class="avatar-wrapper me-2 rounded-2 bg-label-secondary">' +
-                            '<div class="avatar">' +
-                            $output +
-                            '</div>' +
-                            '</div>' +
-                            '<div class="d-flex flex-column justify-content-center">' +
-                            '<span class="text-body text-wrap fw-medium">' +
-                            $name +
-                            '</span>' +
-                            '<span class="text-muted text-truncate mb-0 d-none d-sm-block"><small>' +
-                            $category_detail +
-                            '</small></span>' +
-                            '</div>' +
-                            '</div>';
-                        return $row_output;
+                    searchable: true,
+                    orderable: true,
+                    render: (data, type, full, meta) => {
+                        var $item = full['name'];
+                        return '<span>' + $item + '</span>';
                     }
                 },
                 {
-                    // Total products
                     targets: 3,
-                    responsivePriority: 3,
-                    render: function (data, type, full, meta) {
-                        var $totalProducts = full['totalProducts'];
-                        return '<div class="text-sm-end">' + $totalProducts + '</div>';
+                    searchable: true,
+                    orderable: true,
+                    render: (data, type, full, meta) => {
+                        var $item = full['totalProducts'];
+                        return '<span>' + $item + '</span>';
                     }
                 },
                 {
-                    // Total Earnings
                     targets: 4,
-                    orderable: false,
-                    render: function (data, type, full, meta) {
-                        var $totalEarnings = full['totalEarnings'];
-                        return "<div class='h6 mb-0 text-sm-end'>" + $totalEarnings + '</div';
+                    searchable: true,
+                    orderable: true,
+                    render: (data, type, full, meta) => {
+                        var $item = full['totalEarnings'];
+                        return '<span>' + $item + '</span>';
                     }
                 },
                 {
@@ -272,20 +225,20 @@ $(function () {
                 }
             }
         },
-        plugins: {
-            trigger: new FormValidation.plugins.Trigger(),
-            bootstrap5: new FormValidation.plugins.Bootstrap5({
-                // Use this for enabling/changing valid/invalid class
-                eleValidClass: 'is-valid',
-                rowSelector: function (field, ele) {
-                    // field is the field name & ele is the field element
-                    return '.mb-3';
-                }
-            }),
-            submitButton: new FormValidation.plugins.SubmitButton(),
-            // Submit the form when all fields are valid
-            // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-            autoFocus: new FormValidation.plugins.AutoFocus()
-        }
+        // plugins: {
+        //     trigger: new FormValidation.plugins.Trigger(),
+        //     bootstrap5: new FormValidation.plugins.Bootstrap5({
+        //         // Use this for enabling/changing valid/invalid class
+        //         eleValidClass: 'is-valid',
+        //         rowSelector: function (field, ele) {
+        //             // field is the field name & ele is the field element
+        //             return '.mb-3';
+        //         }
+        //     }),
+        //     submitButton: new FormValidation.plugins.SubmitButton(),
+        //     // Submit the form when all fields are valid
+        //     // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
+        //     autoFocus: new FormValidation.plugins.AutoFocus()
+        // }
     });
 })();

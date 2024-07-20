@@ -1,11 +1,11 @@
 package org.project.pos.category.service;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.project.pos.category.model.CategoryEntity;
 import org.project.pos.category.model.CategoryReq;
 import org.project.pos.category.model.CategoryRes;
 import org.project.pos.category.repo.CategoryRepo;
-import org.project.pos.constan.DataStatus;
 import org.project.pos.exception.PosException;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
@@ -19,21 +19,18 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
 
     private final CategoryRepo categoryRepo;
 
-    public CategoryServiceImpl(CategoryRepo categoryRepo) {
-        this.categoryRepo = categoryRepo;
-    }
-
     @Override
     public List<CategoryRes> getAll() {
-        List<CategoryEntity> result = this.categoryRepo.findAllByStatus(DataStatus.ACTIVE);
-        if (result.isEmpty()) {
+        List<CategoryEntity> result = this.categoryRepo.findAll();
+        if (result.isEmpty()){
             return Collections.emptyList();
         }
-        return result.stream().map(this::convertEntityToRes).collect(Collectors.toList());
+        return result.stream().map(CategoryRes::new).collect(Collectors.toList());
     }
 
     @Override
