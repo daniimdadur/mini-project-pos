@@ -17,4 +17,9 @@ public class AuthController {
     public ModelAndView forget() {
         return new ModelAndView("pages/auth/forgot-password");
     }
+
+    @GetMapping("register")
+    public ModelAndView register() {
+        return new ModelAndView("pages/auth/register");
+    }
 }

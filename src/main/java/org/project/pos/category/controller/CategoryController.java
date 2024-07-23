@@ -1,7 +1,6 @@
 package org.project.pos.category.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.project.pos.category.model.CategoryEntity;
 import org.project.pos.category.model.CategoryRes;
 import org.project.pos.category.service.CategoryService;
 import org.springframework.stereotype.Controller;

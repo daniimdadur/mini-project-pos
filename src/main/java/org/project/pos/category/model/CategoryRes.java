@@ -14,8 +14,7 @@ public class CategoryRes {
     private String name;
     private Integer totalProducts;
     private Integer totalEarnings;
-public CategoryRes(CategoryEntity categoryEntity) {
-    BeanUtils.copyProperties(categoryEntity, this);
-}
-
+    public CategoryRes(CategoryEntity categoryEntity) {
+        BeanUtils.copyProperties(categoryEntity, this);
+    }
 }

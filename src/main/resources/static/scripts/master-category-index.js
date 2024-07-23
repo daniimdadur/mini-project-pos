@@ -34,7 +34,7 @@ $(function () {
     }
 
     // Variable declaration for category list table
-    var dt_category_list_table = $('.datatables-category-list');
+    var dt_category_list_table = $('#table-category');
 
     //select2 for dropdowns in offcanvas
 
@@ -52,7 +52,7 @@ $(function () {
     // Customers List Datatable
 
     if (dt_category_list_table.length > 0) {
-        var ajaxUrl = $('#person-title').attr('href');
+        var ajaxUrl = $('#category-title').attr('href');
         var dt_category = dt_category_list_table.DataTable({
             ajax: ajaxUrl, // JSON file to add data
             columns: [

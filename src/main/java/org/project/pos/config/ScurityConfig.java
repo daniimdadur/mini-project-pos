@@ -23,17 +23,8 @@ import org.springframework.security.web.SecurityFilterChain;
 public class ScurityConfig {
     private String[] WHITE_LIST_URL = new String[]{
             "/assets/audio/**", "/assets/css/**", "/assets/img/**", "/assets/js/**", "/assets/json/**", "/assets/scripts/**", "/assets/svg/**", "/assets/vendor/**",
-            "/api/v1/**",
-            "/v2/api-docs",
-            "/v3/api-docs",
-            "/v3/api-docs/**",
-            "/swagger-resources",
-            "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
-            "/swagger-ui/**",
-            "/webjars/**",
-            "/swagger-ui.html"
+            "/forgot",
+            "/register"
     };
 
     private final UserService userService;

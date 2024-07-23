@@ -7,13 +7,13 @@
 </head>
 <body>
 <div class="container-xxl flex-grow-1 container-p-y" layout:fragment="content">
-    <h4 class="py-3 mb-2" id="category-title" th:href="@{~/category}"><span class="text-muted fw-light">eCommerce /</span> Category List</h4>
+    <h4 class="py-3 mb-2" id="category-title" th:href="@{~/category/data}"><span class="text-muted fw-light">eCommerce /</span> Category List</h4>
 
     <div class="app-ecommerce-category">
         <!-- Category List Table -->
         <div class="card">
             <div class="card-datatable table-responsive">
-                <table class="datatables-category-list table border-top">
+                <table class="datatables-category-list table border-top" id="table-category">
                     <thead>
                     <tr>
                         <th>Id</th>
