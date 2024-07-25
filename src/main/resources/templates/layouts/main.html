@@ -27,7 +27,7 @@
     <link rel="stylesheet" th:href="@{~/assets/vendor/fonts/tabler-icons.css}" />
     <link rel="stylesheet" th:href="@{~/assets/vendor/fonts/flag-icons.css}" />
 
-    <!-- Core CSS -->
+    <!-- Core css} -->
     <link rel="stylesheet" th:href="@{~/assets/vendor/css/rtl/core.css}" class="template-customizer-core-css" />
     <link rel="stylesheet" th:href="@{~/assets/vendor/css/rtl/theme-default.css}" class="template-customizer-theme-css" />
     <link rel="stylesheet" th:href="@{~/assets/css/demo.css}" />
@@ -41,20 +41,8 @@
     <link rel="stylesheet" th:href="@{~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css}" />
     <link rel="stylesheet" th:href="@{~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css}" />
 
-    <!--category-->
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/form-validation/umd/styles/index.min.css}" />
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/quill/typography.css}" />
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/quill/katex.css}" />
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/quill/editor.css}" />
-    <link rel="stylesheet" th:href="@{~/assets/vendor/css/pages/app-ecommerce.css}" />
-
-    <!--product add-->
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/select2/select2.css}" />
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/dropzone/dropzone.css}" />
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/flatpickr/flatpickr.css}" />
-    <link rel="stylesheet" th:href="@{~/assets/vendor/libs/tagify/tagify.css}" />
-
-    <!-- Page CSS -->
+    <!-- Page css -->
+    <link rel="stylesheet" th:href="@{~/assets/vendor/css/pages/cards-advance.css}" />
 
     <!-- Helpers -->
     <script th:src="@{~/assets/vendor/js/helpers.js}"></script>
@@ -63,6 +51,8 @@
     <script th:src="@{~/assets/vendor/js/template-customizer.js}"></script>
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script th:src="@{~/assets/js/config.js}"></script>
+
+    <th:block layout:fragment="pageCss"></th:block>
 </head>
 <body>
 <!--menu-->
@@ -114,25 +104,6 @@
 <script th:src="@{~/assets/vendor/libs/i18n/i18n.js}"></script>
 <script th:src="@{~/assets/vendor/libs/typeahead-js/typeahead.js}"></script>
 <script th:src="@{~/assets/vendor/js/menu.js}"></script>
-
-<!--category list-->
-<script th:src="@{~/assets/vendor/libs/moment/moment.js}"></script>
-<script th:src="@{~/assets/vendor/libs/select2/select2.js}"></script>
-<script th:src="@{~/assets/vendor/libs/form-validation/umd/bundle/popular.min.js}"></script>
-<script th:src="@{~/assets/vendor/libs/form-validation/umd/plugin-bootstrap5/index.min.js}"></script>
-<script th:src="@{~/assets/vendor/libs/form-validation/umd/plugin-auto-focus/index.min.js}"></script>
-<script th:src="@{~/assets/vendor/libs/quill/katex.js}"></script>
-<script th:src="@{~/assets/vendor/libs/quill/quill.js}"></script>
-
-<!--customers-->
-<script th:src="@{~/assets/vendor/libs/cleavejs/cleave.js}"></script>
-<script th:src="@{~/assets/vendor/libs/cleavejs/cleave-phone.js}"></script>
-
-<!--product add-->
-<script th:src="@{~/assets/vendor/libs/dropzone/dropzone.js}"></script>
-<script th:src="@{~/assets/vendor/libs/jquery-repeater/jquery-repeater.js}"></script>
-<script th:src="@{~/assets/vendor/libs/flatpickr/flatpickr.js}"></script>
-<script th:src="@{~/assets/vendor/libs/tagify/tagify.js}"></script>
 
 <!-- endbuild -->
 

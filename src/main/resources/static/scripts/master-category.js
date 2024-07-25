@@ -52,8 +52,9 @@ $(function () {
   // Customers List Datatable
 
   if (dt_category_list_table.length) {
+    var link = $('#category-title').attr('href');
     var dt_category = dt_category_list_table.DataTable({
-      ajax: assetsPath + 'json/ecommerce-category-list.json', // JSON file to add data
+      ajax: link, // JSON file to add data
       columns: [
         // columns according to JSON
         { data: '' },

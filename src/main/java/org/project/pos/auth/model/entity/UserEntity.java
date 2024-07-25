@@ -29,10 +29,10 @@ public class UserEntity implements UserDetails {
     private String id;
 
     @Column(name = "first_name", length = 64)
-    private String firstname;
+    private String firstName;
 
     @Column(name = "last_name", length = 64)
-    private String lastname;
+    private String lastName;
 
     @Column(name = "email", length = 100)
     private String email;
@@ -46,15 +46,13 @@ public class UserEntity implements UserDetails {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
+
     private List<RoleEntity> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user")
-    private List<TokenEntity> tokens;
-
-    public UserEntity(String firstname, String lastname, String email, String password, List<RoleEntity> roles) {
+    public UserEntity(String firstName, String lastName, String email, String password, List<RoleEntity> roles) {
         this.id = CommonUtil.getUUID();
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.roles = roles;
@@ -63,7 +61,7 @@ public class UserEntity implements UserDetails {
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         Collection<GrantedAuthority> authorities = this.getRoles().stream()
-                .map((role) -> new SimpleGrantedAuthority(role.getName()))
+                .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toSet());
         return authorities;
     }

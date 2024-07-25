@@ -6,8 +6,12 @@ import org.project.pos.auth.model.entity.RoleEntity;
 import org.project.pos.auth.model.entity.UserEntity;
 import org.project.pos.auth.repository.RoleRepo;
 import org.project.pos.auth.repository.UserRepo;
-import org.project.pos.category.model.CategoryEntity;
-import org.project.pos.category.repo.CategoryRepo;
+import org.project.pos.form.category.model.CategoryEntity;
+import org.project.pos.form.category.repo.CategoryRepo;
+import org.project.pos.form.customers.model.CustomersEntity;
+import org.project.pos.form.customers.repo.CustomersRepo;
+import org.project.pos.form.products.model.ProductEntity;
+import org.project.pos.form.products.repo.ProductRepo;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -22,12 +26,16 @@ import java.util.List;
 public class DbInit implements CommandLineRunner {
     private final PasswordEncoder encoder;
     private final CategoryRepo categoryRepo;
+    private final CustomersRepo customersRepo;
+    private final ProductRepo productRepo;
     private final UserRepo userRepo;
     private final RoleRepo roleRepo;
 
     @Override
     public void run(String... args) throws Exception {
         initCategory();
+//        initCustomers();
+        initProducts();
         initRole();
         initUser();
     }
@@ -38,18 +46,54 @@ public class DbInit implements CommandLineRunner {
         }
 
         List<CategoryEntity> categoryEntityList = Arrays.asList(
-                new CategoryEntity("1111", "Makanan", 10, 20),
-                new CategoryEntity("2222", "Minuman", 10, 20),
-                new CategoryEntity("3333", "Hewan", 10, 20),
-                new CategoryEntity("4444", "Manusia", 10, 20),
-                new CategoryEntity("5555", "Ikan", 10, 20)
+                new CategoryEntity(1, "product-1.png", "Smart Phone", "Choose from wide range of smartphones from popular brands", "$99129", 1947),
+                new CategoryEntity(2, "product-2.png", "Electronics", "Choose from wide range of electronics from popular brands", "$2512.50", 7283),
+                new CategoryEntity(3, "product-3.png", "Clocks", "Choose from wide range of clocks from popular brands", "$1612.34", 2954),
+                new CategoryEntity(4, "product-4.png", "Shoes", "Explore the latest shoes from Top brands", "$3612.98", 4940),
+                new CategoryEntity(5, "product-5.png", "Accessories", "Explore best selling accessories from Top brands", "$79129", 4665)
         );
 
         try {
             this.categoryRepo.saveAll(categoryEntityList);
             log.info("Save Category SuccessFully");
         }catch (Exception e){
-            log.error("Save Category Failed");
+            log.error("Save Category Failed, Error: {}", e.getMessage());
+        }
+    }
+
+    private void initCustomers() {
+        if (!this.customersRepo.findAll().isEmpty()){
+            return;
+        }
+
+        List<CustomersEntity> customersEntityList = Arrays.asList(
+                new CustomersEntity(1, "Stanfield Baser", 879861, "sbaser0@boston.com", "Sri Lanka", "lk", 157, "$2074.22", "3.png"),
+                new CustomersEntity(2, "Laurie Dax", 178408, "ldax1@lycos.com", "Russia", "ru", 663, "$2404.19", "2.png")
+        );
+
+        try {
+            this.customersRepo.saveAll(customersEntityList);
+            log.info("Save Customer SuccessFully");
+        } catch (Exception e) {
+            log.error("Save Customer Failed, Error: {}", e.getMessage());
+        }
+    }
+
+    private void initProducts() {
+        if (!this.productRepo.findAll().isEmpty()) {
+            return;
+        }
+
+        List<ProductEntity> result = Arrays.asList(
+                new ProductEntity(1, "iPhone 14 Pro", 2, 1, 19472, "$999", 665, 3, "product-1.png", "Super Retina XDR display, footnote Pro Motion technology"),
+                new ProductEntity(2, "Echo Dot (4th gen)", 2, 0, 72836, "$25.50", 6857, 2, "product-2.png", "Super Retina XDR display, footnote Pro Motion technology")
+        );
+
+        try {
+            this.productRepo.saveAll(result);
+            log.info("Save Product SuccessFully");
+        } catch (Exception e) {
+            log.error("Save Product Failed, Error: {}", e.getMessage());
         }
     }
 
@@ -80,7 +124,7 @@ public class DbInit implements CommandLineRunner {
         List<UserEntity> userEntityList = new ArrayList<>();
         RoleEntity roleUser = roleRepo.findByName("ROLE_USER").orElse(null);
         if (roleUser != null){
-            userEntityList.add(new UserEntity("user", "satu", "user01@gmail.com", encoder.encode("P@ssW0rd32!"), Arrays.asList(roleUser)));
+            userEntityList.add(new UserEntity("user", "satu", "user01@gmail.com", encoder.encode("Us3r1234"), Arrays.asList(roleUser)));
         }
 
         RoleEntity roleAdmin = roleRepo.findByName("ROLE_ADMIN").orElse(null);

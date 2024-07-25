@@ -46,8 +46,9 @@ $(function () {
     // E-commerce Products datatable
 
     if (dt_product_table.length) {
+        var link = $('#product-title').attr('href')
         var dt_products = dt_product_table.DataTable({
-            ajax: assetsPath + 'json/ecommerce-product-list.json', // JSON file to add data
+            ajax: link, // JSON file to add data
             columns: [
                 // columns according to JSON
                 { data: 'id' },
