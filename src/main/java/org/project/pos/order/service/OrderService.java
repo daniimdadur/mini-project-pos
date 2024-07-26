@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface OrderService {
     List<OrderRes> getAll();
-    Optional<OrderRes> getById(Integer id);
+    Optional<OrderRes> getById(String id);
     Optional<OrderRes> add(OrderReq request);
-    Optional<OrderRes> update(OrderReq request, Integer id);
-    Optional<OrderRes> delete(Integer id);
+    Optional<OrderRes> update(OrderReq request, String id);
+    Optional<OrderRes> delete(String id);
 }

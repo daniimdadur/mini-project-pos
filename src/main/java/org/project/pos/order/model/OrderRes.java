@@ -12,7 +12,7 @@ import org.springframework.beans.BeanUtils;
 public class OrderRes {
 
     @JsonProperty("id")
-    private Integer id;
+    private String id;
 
     @JsonProperty("order")
     private Integer order;

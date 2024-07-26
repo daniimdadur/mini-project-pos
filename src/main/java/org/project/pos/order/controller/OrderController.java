@@ -27,11 +27,12 @@ public class OrderController {
 
     @GetMapping("/data")
     public ResponseEntity<Response> getData() {
-        List<OrderRes> result = new ArrayList<>();
-        result.add(new OrderRes(1, 5434, "Gabrielle Feyer", "gfeyer@nyu.edu", "8.png", 1, 1, "$73.98", "paypal_logo", "5/16/2022", "2:11 AM", 6522));
-        result.add(new OrderRes(2, 54342, "Jackson Deignan", "jdeignan1@dell.com", "2.png", 3, 1, "$72.98", "paypal_logo", "5/3/2022", "7:26 PM", 7538));
+//        List<OrderRes> result = new ArrayList<>();
+//        result.add(new OrderRes(1, 5434, "Gabrielle Feyer", "gfeyer@nyu.edu", "8.png", 1, 1, "$73.98", "paypal_logo", "5/16/2022", "2:11 AM", 6522));
+//        result.add(new OrderRes(2, 5342, "Jackson Deignan", "jdeignan1@dell.com", "2.png", 3, 1, "$72.98", "paypal_logo", "5/3/2022", "7:26 PM", 7538));
+        List<OrderRes> result = this.orderService.getAll();
 
-        Response response = new Response();
+        Response response = new Response(result);
         return ResponseEntity.ok(response);
     }
 }

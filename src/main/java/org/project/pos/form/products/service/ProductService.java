@@ -8,8 +8,8 @@ import java.util.Optional;
 
 public interface ProductService {
     List<ProductRes> geAll();
-    Optional<ProductRes> getById(Integer id);
+    Optional<ProductRes> getById(String id);
     Optional<ProductRes> save(ProductReq request);
-    Optional<ProductRes> update(ProductReq request, Integer id);
-    Optional<ProductRes> delete(Integer id);
+    Optional<ProductRes> update(ProductReq request, String id);
+    Optional<ProductRes> delete(String id);
 }

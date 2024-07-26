@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class ProductReq {
 
     @JsonProperty("id")
-    private Integer id;
+    private String id;
 
     @JsonProperty("product_name")
     private String productName;

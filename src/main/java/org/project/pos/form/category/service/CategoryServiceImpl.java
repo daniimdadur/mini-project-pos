@@ -35,9 +35,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Optional<CategoryRes> getById(String id) {
-        CategoryEntity result = this.getEntityById(id);
+        CategoryEntity result = this.categoryRepo.findById(id).orElse(null);
+        if (result == null) {
+            log.info("category with id {} not found", id);
+            return Optional.empty();
+        }
 
-        return Optional.of(this.convertEntityToRes(result));
+        CategoryRes res = new CategoryRes(result);
+        return Optional.of(res);
     }
 
     @Override
@@ -62,6 +67,7 @@ public class CategoryServiceImpl implements CategoryService {
             log.info("category with id: {} not found", id);
             return Optional.empty();
         }
+
         BeanUtils.copyProperties(request, categoryEntity);
         try {
             this.categoryRepo.save(categoryEntity);
@@ -75,7 +81,19 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Optional<CategoryRes> delete(String id) {
-        return Optional.empty();
+        CategoryEntity result = this.categoryRepo.findById(id).orElse(null);
+        if (result == null) {
+            log.warn("category with id {} not found", id);
+            return Optional.empty();
+        }
+        try {
+            this.categoryRepo.delete(result);
+            log.info("delete category from databases success");
+            return Optional.of(new CategoryRes(result));
+        } catch (Exception e) {
+            log.error("delete category from databases failed, error: {}", e.getMessage());
+            return Optional.empty();
+        }
     }
 
     private CategoryRes convertEntityToRes(CategoryEntity entity) {

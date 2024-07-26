@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class CategoryRes {
 
     @JsonProperty("id")
-    private Integer id;
+    private String id;
 
     @JsonProperty("cat_image")
     private String catImage;

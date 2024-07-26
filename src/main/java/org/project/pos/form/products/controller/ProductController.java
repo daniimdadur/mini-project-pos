@@ -24,6 +24,12 @@ public class ProductController {
         return view;
     }
 
+    @GetMapping("/add")
+    public ModelAndView add() {
+        ModelAndView view = new ModelAndView("pages/master/products/add");
+        return view;
+    }
+
     @GetMapping("/data")
     public ResponseEntity<Response> getData() {
         List<ProductRes> result = this.productService.geAll();

@@ -19,7 +19,7 @@ public class CategoryEntity {
 
     @Id
     @Column
-    private Integer id;
+    private String id;
 
     @Column(name = "cat_image")
     private String catImage;

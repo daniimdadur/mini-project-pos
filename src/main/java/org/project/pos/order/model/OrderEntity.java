@@ -19,12 +19,12 @@ public class OrderEntity {
 
     @Id
     @Column
-    private Integer id;
+    private String id;
 
-    @Column(name = "order")
+    @Column(name = "order_name")
     private Integer order;
 
-    @Column(name = "customer")
+    @Column(name = "customer_name")
     private String customer;
 
     @Column(name = "email")

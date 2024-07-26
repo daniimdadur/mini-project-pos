@@ -24,7 +24,8 @@ public class ScurityConfig {
     private String[] WHITE_LIST_URL = new String[]{
             "/assets/audio/**", "/assets/css/**", "/assets/img/**", "/assets/js/**", "/assets/json/**", "/assets/scripts/**", "/assets/svg/**", "/assets/vendor/**",
             "/forgot",
-            "/register"
+            "/register",
+            "/scripts/auth-login.js"
     };
 
     private final UserService userService;

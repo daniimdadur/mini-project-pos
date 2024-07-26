@@ -10,16 +10,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
+@Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 @Table(name = "tbl_customers")
 public class CustomersEntity {
 
     @Id
     @Column
-    private Integer id;
+    private String id;
 
     @Column(name = "customer")
     private String customerName;
@@ -36,7 +36,7 @@ public class CustomersEntity {
     @Column(name = "country_code")
     private String countryCode;
 
-    @Column(name = "order")
+    @Column(name = "order_count")
     private Integer orderCount;
 
     @Column(name = "total_spent")

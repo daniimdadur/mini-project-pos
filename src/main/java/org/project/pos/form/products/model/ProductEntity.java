@@ -8,6 +8,9 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.BeanUtils;
+
+import java.util.UUID;
 
 @Entity
 @Data
@@ -19,7 +22,7 @@ public class ProductEntity {
 
     @Id
     @Column
-    private Integer id;
+    private String id;
 
     @Column(name = "product_name")
     private String productName;

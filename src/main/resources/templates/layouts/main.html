@@ -41,8 +41,7 @@
     <link rel="stylesheet" th:href="@{~/assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css}" />
     <link rel="stylesheet" th:href="@{~/assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css}" />
 
-    <!-- Page css -->
-    <link rel="stylesheet" th:href="@{~/assets/vendor/css/pages/cards-advance.css}" />
+    <th:block layout:fragment="pageCss"></th:block>
 
     <!-- Helpers -->
     <script th:src="@{~/assets/vendor/js/helpers.js}"></script>
@@ -52,7 +51,6 @@
     <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
     <script th:src="@{~/assets/js/config.js}"></script>
 
-    <th:block layout:fragment="pageCss"></th:block>
 </head>
 <body>
 <!--menu-->

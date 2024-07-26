@@ -12,7 +12,7 @@ import org.springframework.beans.BeanUtils;
 public class CustomersRes {
 
     @JsonProperty("id")
-    private Integer id;
+    private String id;
 
     @JsonProperty("customer")
     private String customerName;
