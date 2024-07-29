@@ -2,11 +2,14 @@ package org.project.pos.form.products.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.project.pos.base.Response;
+import org.project.pos.form.products.model.ProductReq;
 import org.project.pos.form.products.model.ProductRes;
 import org.project.pos.form.products.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -27,7 +30,14 @@ public class ProductController {
     @GetMapping("/add")
     public ModelAndView add() {
         ModelAndView view = new ModelAndView("pages/master/products/add");
+        view.addObject("product", new ProductReq());
         return view;
+    }
+
+    @PostMapping("/save")
+    public ModelAndView save(@ModelAttribute ProductReq product) {
+        this.productService.save(product);
+        return new ModelAndView("redirect:/products");
     }
 
     @GetMapping("/data")
